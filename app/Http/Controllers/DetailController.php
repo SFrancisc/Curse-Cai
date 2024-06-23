@@ -91,7 +91,7 @@ class DetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Detail $details)
+    public function destroy(Detail $detail)
     {
         //delete the detail
         $detail->delete();
