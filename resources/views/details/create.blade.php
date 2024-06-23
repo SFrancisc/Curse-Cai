@@ -1,14 +1,14 @@
-@extends('races.layout');
+@extends('details.layout')
 
-@section('content');
+@section('content')
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New Race</h2>
+            <h2>Add New Detail</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('races.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('details.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -24,30 +24,30 @@
     </div>
 @endif
 
-<form action="{{ route('races.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('details.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-     <div class="row">
+    <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Location:</strong>
-                <textarea type="text" name="location" class="form-control" placeholder="Location"></textarea>
+                <strong>Horse:</strong>
+                <input type="text" name="horse" class="form-control" placeholder="Horse Name" value="{{ old('horse') }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Date:</strong>
-                <textarea type="text" name="date" class="form-control" placeholder="Date"></textarea>
+                <strong>Share:</strong>
+                <input type="number" name="share" class="form-control" placeholder="Share" value="{{ old('share') }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Distance:</strong>
-                <textarea  type="text" name="distance" class="form-control" placeholder="Distance"></textarea>
+                <strong>Winner:</strong>
+                <input type="checkbox" name="winner" value="1" {{ old('winner') ? 'checked' : '' }}>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
 

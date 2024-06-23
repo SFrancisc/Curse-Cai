@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('winners', function (Blueprint $table) {
+        Schema::create('horses', function (Blueprint $table) {
             $table->id();
-            $table->date('expire');
+            $table->string('name');
+            $table->integer('age');
+            $table->integer('win_races');
+            $table->integer('share');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('winners');
+        Schema::dropIfExists('horses');
     }
 };

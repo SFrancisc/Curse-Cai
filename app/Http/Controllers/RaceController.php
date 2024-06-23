@@ -37,7 +37,7 @@ class RaceController extends Controller
             'distance' => 'required'
         ]);
         //create a new Race
-        Race::create($request->all());
+        $race = Race::create($request->all());
 
         //redirect the user and sent friendly message
         return redirect()->route('races.index')->with('succes', 'Race created succesfully');
@@ -56,7 +56,7 @@ class RaceController extends Controller
      */
     public function edit(Race $race)
     {
-        //
+        return view('races.edit', compact('race'));
     }
 
     /**
@@ -64,7 +64,16 @@ class RaceController extends Controller
      */
     public function update(Request $request, Race $race)
     {
-        //
+        $request->validate([
+            'location' => 'required',
+            'date' => 'required',
+            'distance' => 'required'
+        ]);
+        //create a new Race
+        $race->update($request->all());
+
+        //redirect the user and sent friendly message
+        return redirect()->route('races.index')->with('succes', 'Race updated succesfully');
     }
 
     /**
@@ -72,6 +81,19 @@ class RaceController extends Controller
      */
     public function destroy(Race $race)
     {
-        //
+        //delete the product
+        $race->delete();
+
+        //redirect the user and display succes message
+        return redirect()->route('races.index')->with('succes', 'Race deleted succesfully');
+    }
+    /**
+     * Go to user page.
+     */
+    public function user(Race $race)
+    {
+        $races = Race::latest()->paginate(10);
+
+        return view('races.user', compact('races'));
     }
 }
