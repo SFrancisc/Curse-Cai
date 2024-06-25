@@ -14,4 +14,9 @@ class Race extends Model
         'date',
         'distance'
     ];
+
+    public function details()
+    {
+        return $this->hasMany(Detail::class);
+    }
 }

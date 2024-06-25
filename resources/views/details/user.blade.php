@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
-                <h2>Details</h2>
+                <h2>Details for Race: {{ $race->location }} on {{ $race->date }}</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-danger" href="{{ route('races.user') }}"> Back</a>

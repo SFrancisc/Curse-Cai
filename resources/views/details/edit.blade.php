@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Detail</h2>
+                <h2>Edit Detail for Race: {{ $race->location }} on {{ $race->date }}</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('details.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('races.details.index', $race->id) }}"> Back</a>
             </div>
         </div>
     </div>
@@ -23,33 +23,32 @@
         </div>
     @endif
 
-    <form action="{{ route('details.update',$detail->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('races.details.update', [$race->id, $detail->id]) }}" method="POST">
         @csrf
         @method('PUT')
 
-         <div class="row">
+        <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Horse:</strong>
-                    <input type="text" name="horse" class="form-control" placeholder="Name">
+                    <input type="text" name="horse" class="form-control" value="{{ $detail->horse }}" placeholder="Horse Name">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Share:</strong>
-                    <input type="text" name="share" class="form-control" placeholder="Share">
+                    <input type="number" name="share" class="form-control" value="{{ $detail->share }}" placeholder="Share">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Winner:</strong>
-                    <input type="text" name="winner" class="form-control" placeholder="winner">
+                    <input type="checkbox" name="winner" value="1" {{ $detail->winner ? 'checked' : '' }}>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-
     </form>
 @endsection

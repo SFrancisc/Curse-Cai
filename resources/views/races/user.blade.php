@@ -36,7 +36,7 @@
         <td>{{ $race->location }}</td>
         <td>{{ $race->date }}</td>
         <td>
-            <a class="btn btn-danger"href="{{ route('details.user', $race->id) }}">Details</a>
+            <a class="btn btn-danger"href="{{ route('races.details.user', ['race' => $race->id]) }}">Details</a>
         </td>
         <td>{{ $race->distance }}</td>
         <td>

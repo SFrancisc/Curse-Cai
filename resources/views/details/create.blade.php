@@ -5,10 +5,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New Detail</h2>
+            <h2>Add New Detail for Race: {{ $race->location }} on {{ $race->date }}</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('details.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('races.details.index', $race->id) }}"> Back</a>
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
     </div>
 @endif
 
-<form action="{{ route('details.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('races.details.store', $race->id) }}" method="POST">
     @csrf
 
     <div class="row">
@@ -50,7 +50,5 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
-
 </form>
-
 @endsection

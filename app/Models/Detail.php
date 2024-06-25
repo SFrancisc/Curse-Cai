@@ -12,6 +12,12 @@ class Detail extends Model
     protected $fillable = [
         'horse',
         'share',
-        'winner'
+        'winner',
+        'race_id'
     ];
+
+    public function race()
+    {
+        return $this->belongsTo(Race::class);
+    }
 }

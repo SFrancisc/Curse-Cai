@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2> Show Detail</h2>
+            <h2>Details for Race: {{ $race->location }} on {{ $race->date }}</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('details.index') }}"> Back</a>

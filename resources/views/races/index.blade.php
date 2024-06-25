@@ -37,7 +37,7 @@
         <td>{{ $race->location }}</td>
         <td>{{ $race->date }}</td>
         <td>
-            <a class="btn btn-danger" href="{{ route('details.index', $race->id) }}">Details</a>
+            <a class="btn btn-danger" href="{{ route('races.details.index', $race->id) }}">Details</a>
         </td>
         <td>{{ $race->distance }}</td>
         <td>
@@ -51,7 +51,6 @@
         </td>
     </tr>
     @endforeach
-
 </table>
 {{ $races->links() }}
 
