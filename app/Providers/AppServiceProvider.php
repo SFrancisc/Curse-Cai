@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use App\Models\Race;
+use App\Models\Horse;
+use App\Observers\RaceObserver;
+use App\Observers\HorseObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,5 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+        Race::observe(RaceObserver::class);
+        Horse::observe(HorseObserver::class);
     }
 }

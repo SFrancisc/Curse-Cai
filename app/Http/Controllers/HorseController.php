@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Horse;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreRaceRequest;
 
 class HorseController extends Controller
 {
@@ -28,16 +29,9 @@ class HorseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRaceRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'age' => 'required',
-            'win_races' => 'required',
-            'share' => 'required'
-        ]);
-
-        $horse = Horse::create($request->all());
+        $horse = Horse::create($request->validated());
 
         return redirect()->route('horses.index')->with('succes', 'Horse created succesfully');
     }
@@ -61,16 +55,9 @@ class HorseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Horse $horse)
+    public function update(StoreRaceRequest $request, Horse $horse)
     {
-        $request->validate([
-            'name' => 'required',
-            'age' => 'required',
-            'win_races' => 'required',
-            'share' => 'required'
-        ]);
-
-        $horse->update($request->all());
+        $horse->update($request->validated());
 
         return redirect()->route('horses.index')->with('succes', 'Horse created succesfully');
     }

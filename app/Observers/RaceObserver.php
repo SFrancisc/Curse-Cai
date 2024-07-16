@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use Illuminate\Support\Facades\Log;
 use App\Models\Race;
 
 class RaceObserver
@@ -11,7 +12,7 @@ class RaceObserver
      */
     public function created(Race $race): void
     {
-        //
+        Log::info('Race created: ', ['id' => $race->id, 'location' => $race->location]);
     }
 
     /**
@@ -19,7 +20,7 @@ class RaceObserver
      */
     public function updated(Race $race): void
     {
-        //
+        Log::info('Race updated: ', ['id' => $race->id, 'location' => $race->location]);
     }
 
     /**
@@ -27,7 +28,7 @@ class RaceObserver
      */
     public function deleted(Race $race): void
     {
-        //
+        Log::info('Race deleted: ', ['id' => $race->id, 'location' => $race->location]);
     }
 
     /**
@@ -35,7 +36,7 @@ class RaceObserver
      */
     public function restored(Race $race): void
     {
-        //
+        Log::info('Race restored: ', ['id' => $race->id, 'location' => $race->location]);
     }
 
     /**
@@ -43,6 +44,6 @@ class RaceObserver
      */
     public function forceDeleted(Race $race): void
     {
-        //
+        Log::info('Race force deleted: ', ['id' => $race->id, 'location' => $race->location]);
     }
 }

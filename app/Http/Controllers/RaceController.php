@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreRaceRequest;
 
 class RaceController extends Controller
 {
@@ -28,16 +29,10 @@ class RaceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRaceRequest $request)
     {
-        //validate the input
-        $request->validate([
-            'location' => 'required',
-            'date' => 'required',
-            'distance' => 'required'
-        ]);
         //create a new Race
-        $race = Race::create($request->all());
+        $race = Race::create($request->validated());
 
         //redirect the user and sent friendly message
         return redirect()->route('races.index')->with('succes', 'Race created succesfully');
@@ -62,15 +57,10 @@ class RaceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Race $race)
+    public function update(StoreRaceRequest $request, Race $race)
     {
-        $request->validate([
-            'location' => 'required',
-            'date' => 'required',
-            'distance' => 'required'
-        ]);
         //create a new Race
-        $race->update($request->all());
+        $race->update($request->validated());
 
         //redirect the user and sent friendly message
         return redirect()->route('races.index')->with('succes', 'Race updated succesfully');
